@@ -1,4 +1,4 @@
 * @longlc3
 *.js @longlc3
-*.yml @devops
+*.yml @longlc3
 /public/ @longlc3
