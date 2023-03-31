@@ -13,7 +13,7 @@ jobs:
       - name: use Nodejs
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "16.x"
     
       - name: npm install dependencies
         run: npm ci # the same as npm install but it is suitable for ci 
