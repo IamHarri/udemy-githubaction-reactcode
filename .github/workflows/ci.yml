@@ -1,0 +1,28 @@
+name: CI
+on: 
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      
+      - name: use Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+    
+      - name: npm install dependencies
+        run: npm ci # the same as npm install but it is suitable for ci 
+      
+      - name: Check format
+        run: npm run format:check
+      
+      - name: Automation test
+        run: npm test -- --coverage
+        env:
+          CI: true
+      
