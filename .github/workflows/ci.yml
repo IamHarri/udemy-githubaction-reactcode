@@ -85,3 +85,16 @@ jobs:
       - name: Deploy to Production
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: npx surge --project ./build --domain uninterested-us-prod.surge.sh
+
+      - name: Open Issue
+        if: failure()
+        run: |
+          curl -L \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header "Accept: application/vnd.github+json" \
+          --header "Authorization: Bearer ${{ secrets.CUSTOM_TOKEN }}"\
+          --data  "{ "title": "Automamted issue for commit: ${{ github.sha }}", 
+            "body": "This issue was automatically created by the Github action workflow **${{ github.workflow}}**. 
+            \n\n The commit hash was: _${{ github.sha }}_.",
+            "assignees": ["${{ github.event.pull_request.user.login }}"]}"
+         
