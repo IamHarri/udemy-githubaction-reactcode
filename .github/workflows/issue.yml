@@ -11,4 +11,5 @@ jobs:
     steps:
       - name: Send message
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"New issue created: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>}'  https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"issue notify"}' https://hooks.slack.com/services/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
+        #curl -X POST -H 'Content-type: application/json' --data '{"text":"New issue created: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>}'  https://hooks.slack.com/services/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
