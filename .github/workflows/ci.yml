@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
@@ -56,6 +59,12 @@ jobs:
         with:
           name: build-artifact
           path: build
+      
+      - name: Zip assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          zip -r build.zip ./build
+          zip -r coverage.zip ./coverage
 
       - name: Create a Release
         run: npx semantic-release
