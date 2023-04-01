@@ -76,7 +76,7 @@ jobs:
         run: npx semantic-release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
 
       - name: Deploy to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
