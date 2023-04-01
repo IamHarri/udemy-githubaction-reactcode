@@ -94,9 +94,8 @@ jobs:
           --header 'authorization: Bearer ${{ secrets.CUSTOM_TOKEN }}' \
           --header 'content-type: application/json' \
           --data '{
-            "title": "Automamted issue for commit: ${{ github.sha }}", 
-            "body": "This issue was automatically created by the Github action workflow **${{ github.workflow }}**. 
-            \n\n The commit hash was: _${{ github.sha }}_.",
-            "assignees": ["${{ github.event.pull_request.user.login }}"]
-            }'
+            "title": "Automated issue for commit: ${{ github.sha }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
+            }' \
+          --fail
          
