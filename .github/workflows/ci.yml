@@ -12,6 +12,14 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
+      
+      - name: cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # if something has change in package will creat new cache
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: use Nodejs
         uses: actions/setup-node@v1
