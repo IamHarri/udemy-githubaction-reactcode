@@ -48,6 +48,12 @@ jobs:
         with:
           name: coverage
           path: coverage
+      
+      - name: Test Report Codecov
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npx code-coverage
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Build Project
         if: github.event_name == 'push'

@@ -8,10 +8,9 @@ module.exports = {
         ['@semantic-release/github', {
             successComment: false,
             failTitle: false,
-            assests: [
-                { path: "build.zip", label: "Build"},
-                { path: "coverage.zip", label: "Build"},
+            "assets": [
+                { path: "package.json", label: "package"}
             ]
-        }]
+        }]  
     ]
 }
