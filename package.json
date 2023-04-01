@@ -19,7 +19,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format:check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "husky": {
+      "hooks": {
+        "commit-msg": "commmitlint -E HUSKY_GIT_PARAMS"
+      }
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^4.3.8"
   }
 }
