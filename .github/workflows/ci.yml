@@ -51,7 +51,7 @@ jobs:
       
       - name: Test Report Codecov
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: npx code-coverage
+        run: npx codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
