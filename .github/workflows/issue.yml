@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: Send message
         run: |
-          curl -X POST -H 'Content-type: application/json' \ 
-          --data '{"text":"New issue created: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>}' ${{ secrets.SLACK_TOKEN }}
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"New issue created: <${{ github.event.issue.html_url }}|${{ github.event.issue.title }}.>}' \
+          ${{ secrets.SLACK_TOKEN }}
 
 
