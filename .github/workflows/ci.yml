@@ -30,7 +30,9 @@ jobs:
         run: npm ci # the same as npm install but it is suitable for ci
 
       - name: Check format
-        run: npm run format:check
+        run: |
+          npm run format
+          npm run format:check
 
       - name: Automation test
         run: npm test -- --coverage
