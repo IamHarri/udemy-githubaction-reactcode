@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Send message
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"New release ${{ github.event.release.tag_name }} is out, <${{ github.event.release.html_url }}|check it out now.>"}' https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"New release ${{ github.event.release.tag_name }} is out, <${{ github.event.release.html_url }}|check it out now.>"}'  https://hooks.slack.com/services/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
 
 
