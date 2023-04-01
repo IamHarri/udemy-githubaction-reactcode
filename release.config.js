@@ -1,4 +1,4 @@
-mpdule.exports = {
+module.exports = {
     branches: ["main"],
     repositoryUrl: "https://github.com/longlc3/udemy-githubaction-reactcode",
     tagFormat: "v${version}",
