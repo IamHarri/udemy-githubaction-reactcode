@@ -89,12 +89,14 @@ jobs:
       - name: Open Issue
         if: failure()
         run: |
-          curl -L \
+          curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \
-          --header "Accept: application/vnd.github+json" \
-          --header "Authorization: Bearer ${{ secrets.CUSTOM_TOKEN }}"\
-          --data  "{ "title": "Automamted issue for commit: ${{ github.sha }}", 
-            "body": "This issue was automatically created by the Github action workflow **${{ github.workflow}}**. 
+          --header 'authorization: Bearer ${{ secrets.CUSTOM_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Automamted issue for commit: ${{ github.sha }}", 
+            "body": "This issue was automatically created by the Github action workflow **${{ github.workflow }}**. 
             \n\n The commit hash was: _${{ github.sha }}_.",
-            "assignees": ["${{ github.event.pull_request.user.login }}"]}"
+            "assignees": ["${{ github.event.pull_request.user.login }}"]
+            }'
          
