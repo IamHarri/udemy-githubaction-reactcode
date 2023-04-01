@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
-      
+
       - name: cache node_modules
         uses: actions/cache@v3
         with:
@@ -42,13 +42,13 @@ jobs:
         run: npm test -- --coverage
         env:
           CI: true
-      
+
       - name: Upload Test Coverage
         uses: actions/upload-artifact@v1
         with:
           name: coverage
           path: coverage
-      
+
       - name: Test Report Codecov
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: npx codecov
@@ -65,7 +65,7 @@ jobs:
         with:
           name: build-artifact
           path: build
-      
+
       - name: Zip assets
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
@@ -81,8 +81,7 @@ jobs:
       - name: Deploy to staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
         run: npx surge --project ./build --domain uninterested-us-staging.surge.sh
-      
+
       - name: Deploy to Production
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: npx surge --project ./build --domain uninterested-us-prod.surge.sh
-
